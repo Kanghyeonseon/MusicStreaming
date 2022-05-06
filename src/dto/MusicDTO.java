@@ -1,6 +1,6 @@
 package dto;
 
-public class MusicDTO {
+public class MusicDTO extends DTO {
 	private int Music_Code;
 	private String Music_Title;
 	private String Music_Genre;
