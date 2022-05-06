@@ -13,7 +13,7 @@ public class MusicDAO {
 	//1. 연결관련 정보 저장용 변수
 	String id = "root";
 	String pw = "1234";
-	String url ="jdbc:mysql://localhost:3306/streamingdb"; 
+	String url ="jdbc:mysql://localhost:3306/musicstreaming"; 
 
 	//2. DB연결관련 객체를 위한 참조변수
 	Connection conn = null; 
