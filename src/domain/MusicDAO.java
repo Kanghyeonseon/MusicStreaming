@@ -1,40 +1,44 @@
 package domain;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.MusicDTO;
 
 
 
 public class MusicDAO extends DAO {
-	public boolean Select(MusicDTO dto) {
+	public boolean Select() {
+		
 		try {
-			pstmt=conn.prepareStatement("select * from music_tbl");
+			pstmt = conn.prepareStatement("select * from music_tbl");
+			rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
 			
-			//SQL실행
-			rs = pstmt.executeQuery();
-			System.out.println("코드\t타이틀\t장르\t발매일\n");
-			System.out.println("-----------------------------------------");
+			String code=null,title=null, artist=null, genre=null, release=null, keyword=null;
 			while(rs.next()) {
-				//한 열 이동하는것을 .next() 더이상 next가 되지않을 때 까지 
-				
-				System.out.printf("%d\t%s\t%s\t%s\n",rs.getInt("Music_code"), rs.getString("Music_title"), rs.getString("Music_Genre"), rs.getString("Music_Release"));
+				code=rs.getString("Music_Code");
+				title=rs.getString("Music_Title");
+				artist=rs.getString("Music_Genre");
+				genre=rs.getString("Music_Genre");
+				release=rs.getString("Music_Release");
+				keyword=rs.getString("Music_Keyword");
+				System.out.printf("%s\t%s\t%s\t%s\t%s\n",code,title,artist,genre,release,keyword);
+				MusicDTO dto = new MusicDTO(code, title, artist, genre,	release, keyword);
 			}
-			int result = pstmt.executeUpdate();
-			if (result!=0) {return true;}
-		} catch(Exception e) {
-			e.printStackTrace();
+			return true;
+		} catch(Exception e1) { e1.printStackTrace(); 
 		} finally {
-			try {pstmt.close(); }catch(Exception e) { e.printStackTrace(); }
-		}			
-		return false;
+			try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
+			try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
+		} return false;
 	}
 		
 		public boolean Insert(MusicDTO dto) {
-				//전달이 잘 됐는지 boolean형으로 알려준다.
 			try {
 				pstmt = conn.prepareStatement("insert into music_tbl values(?,?,?,?,?,?)");
 				pstmt.setString(1, dto.getMusic_Code());
@@ -74,7 +78,6 @@ public class MusicDAO extends DAO {
 			e.printStackTrace();
 			} finally {
 				try { pstmt.close(); } catch(Exception e) {e.printStackTrace(); }
-				try { conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			}
 			
 			return false;
@@ -90,7 +93,6 @@ public class MusicDAO extends DAO {
 				e.printStackTrace();
 			} finally {
 				try { pstmt.close(); } catch(Exception e) {e.printStackTrace(); }
-				try { conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			}
 			
 

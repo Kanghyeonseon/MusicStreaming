@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -21,7 +23,7 @@ import domain.MusicDAO;
 import dto.AuthDTO;
 import dto.MusicDTO;
 
-public class GUIViewer extends DAO implements ActionListener {
+public class GUIViewer  implements ActionListener {
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -68,8 +70,8 @@ public class GUIViewer extends DAO implements ActionListener {
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 		
-		id = new JTextField("ID");
-		pw = new JTextField("PW");
+		id = new JTextField("admin");
+		pw = new JTextField("1234");
 		
 		login = new JButton("로그인");
 		exit = new JButton("종료");
@@ -163,7 +165,6 @@ public class GUIViewer extends DAO implements ActionListener {
 		membermenu.setVisible(true);
 	}
 	
-	MusicDAO dao = new MusicDAO();
 	
 	
 	@Override
@@ -211,47 +212,13 @@ public class GUIViewer extends DAO implements ActionListener {
 		 
 		 //전체보기를 누르면?
 		 if(e.getSource() ==bt1) {
-			 System.out.println("전체보기 누름!");
-			 
-			 
-			 /*
-			 try {
-				 rs = pstmt.executeQuery();
-				 while(rs.next()) {
-				 MusicDTO dto = new MusicDTO(rs.getString("music_code"),rs.getString("music_title"),rs.getString("music_artist")
-							,rs.getString("music_genre"),rs.getString("music_release"),rs.getString("music_keyword"));
-				 
-				 }//while끝
-				 boolean r2 = controller.SubControllerEX("MUSIC", 1, dto);
-			 } //try끝
-			 catch (Exception e2) { e2.printStackTrace(); }
-			 finally {
-					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
-					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
-			 */
-			 
-			 
-			 try {
-					pstmt = conn.prepareStatement("select * from music_tbl");
-					rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
-					String code=null; String title=null; String artist=null; String genre=null; String release=null; String keyword=null;
-					//행이 하나라서 while을 없애도 되는데 이떄까지 이렇게 했기때문에 헷갈리지말라고 이렇게 해준다.
-					System.out.println("코드\t제목\t가수\t");
-					while(rs.next()) {
-						code=rs.getString("music_code"); 
-						title=rs.getString("music_title"); 
-						artist=rs.getString("music_artist");
-						genre=rs.getString("music_genre");
-						release=rs.getString("music_release"); 
-						keyword=rs.getString("music_keyword");
-						area7.append(code+"\t"+title+"\t"+artist+"\t"+genre+"\t"+release+"\t"+keyword+"\n");
-					}
-				} catch(Exception e1) { e1.printStackTrace(); 
-				} finally {
-					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
-					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
-				}
-				
+			System.out.println("전체보기 누름!");
+			MusicDTO dto = new MusicDTO("1","2","3","4","5","6");
+			boolean r = controller.SubControllerEX("MUSIC", 1, dto);
+			area7.append(dto.getMusic_Artist());
+			if(r) {
+				System.out.println("전체보기 성공!");
+			}
 		 }
 		 if(e.getSource()==bt2) {
 			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()

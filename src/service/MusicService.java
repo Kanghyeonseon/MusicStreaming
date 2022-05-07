@@ -22,8 +22,8 @@ public class MusicService {
 	}
 	
 
-//	public boolean Select(MusicDTO dto) {
-//		return dao.Select(dto);
-//	}
+	public boolean Select(MusicDTO dto) {
+		return dao.Select();
+	}
 	
 }

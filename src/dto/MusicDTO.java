@@ -7,10 +7,15 @@ public class MusicDTO extends DTO {
 	private String Music_Genre;
 	private String Music_Release;
 	private String Music_Keyword;
+//	public MusicDTO() {
+//		super();
+//	} //디폴트생성자도추가했다.
+	
 	public MusicDTO(String music_code) {
 		super();
 		Music_Code=music_code;
-	}
+	} //Code만 가지고 삭제하는 DELETE때문에 추가했음.
+	
 	public MusicDTO(String music_Code, String music_Title, String music_Artist, String music_Genre,
 			String music_Release, String music_Keyword) {
 		super();
@@ -57,13 +62,13 @@ public class MusicDTO extends DTO {
 	public void setMusic_Keyword(String music_Keyword) {
 		Music_Keyword = music_Keyword;
 	}
-	//
 	@Override
 	public String toString() {
 		return "MusicDTO [Music_Code=" + Music_Code + ", Music_Title=" + Music_Title + ", Music_Artist=" + Music_Artist
 				+ ", Music_Genre=" + Music_Genre + ", Music_Release=" + Music_Release + ", Music_Keyword="
 				+ Music_Keyword + "]";
 	}
+	
 	
 
 	
