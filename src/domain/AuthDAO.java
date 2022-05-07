@@ -17,6 +17,7 @@ public class AuthDAO extends DAO{
 				tid=rs.getString("id");
 				tpw=rs.getString("pw");
 			}
+			//
 			
 			//id, pw검증과정
 			if(tid!=null && tpw!=null) {
