@@ -10,15 +10,15 @@ public class MusicService {
 	
 	//조회
 	public void Select(MusicDTO dto) {
-		dao.Select(dto);
+		dao.selectAll(dto);
 	}
 	
 	//추가
 	
 	public boolean Insert(MusicDTO dto) {
 		return dao.Insert(dto);
-		
 	}
-	
-	
+	public void Delete(MusicDTO dto) {
+		dao.Delete();
+	}	
 }

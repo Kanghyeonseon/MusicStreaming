@@ -18,6 +18,8 @@ public class MusicControll implements SubControll {
 			service.Insert(mdto);
 		}else if(num==2){
 			service.Select(mdto);
+		}else if(num==3) {
+			service.Delete(mdto);
 		}
 		
 		
