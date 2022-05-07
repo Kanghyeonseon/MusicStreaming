@@ -57,13 +57,13 @@ public class MusicDTO extends DTO {
 	public void setMusic_Keyword(String music_Keyword) {
 		Music_Keyword = music_Keyword;
 	}
+	//
 	@Override
 	public String toString() {
 		return "MusicDTO [Music_Code=" + Music_Code + ", Music_Title=" + Music_Title + ", Music_Artist=" + Music_Artist
 				+ ", Music_Genre=" + Music_Genre + ", Music_Release=" + Music_Release + ", Music_Keyword="
 				+ Music_Keyword + "]";
 	}
-	
 	
 
 	
