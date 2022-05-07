@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DAO {
-	String id = "root";
-	String pw = "1234";
-	String url ="jdbc:mysql://localhost:3306/streamingdb"; 
-	Connection conn = null; 
-	PreparedStatement pstmt = null; //SQL쿼리 전송용 객체
-	ResultSet rs = null;
-	DAO() {
+	public String id = "root";
+	public String pw = "1234";
+	public String url ="jdbc:mysql://localhost:3306/streamingdb"; 
+	public Connection conn = null; 
+	public PreparedStatement pstmt = null; //SQL쿼리 전송용 객체
+	public ResultSet rs = null;
+	protected DAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver Loading Success!");

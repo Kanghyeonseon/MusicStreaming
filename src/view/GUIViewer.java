@@ -16,9 +16,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.FrontController;
+import domain.DAO;
 import dto.AuthDTO;
+import dto.MusicDTO;
 
-public class GUIViewer implements ActionListener{
+public class GUIViewer extends DAO implements ActionListener {
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -57,6 +59,7 @@ public class GUIViewer implements ActionListener{
 	//생성자
 	public GUIViewer()
 	{
+		super();
 		Login();
 		System.out.println("로그인 창 생성!");
 	}
@@ -146,20 +149,17 @@ public class GUIViewer implements ActionListener{
 		area7 = new JTextArea(""); 
 		JScrollPane scroll = new JScrollPane(area7);
 		scroll.setBounds(20, 270, 450, 170);
-		pan.add(scroll);
-		
+		pan.add(scroll);		
 		
 		employeemenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		employeemenu.setBounds(100,100,500,500);
 		employeemenu.add(pan);
-		employeemenu.setVisible(true);	
-		
+		employeemenu.setVisible(true);
 	}
 	
 	//회원 메뉴 
 	void Member() {
-		membermenu = new JFrame("회원메뉴");
-		
+		membermenu = new JFrame("회원메뉴");		
 		
 		membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		membermenu.setBounds(100,100,500,500);
@@ -200,20 +200,43 @@ public class GUIViewer implements ActionListener{
 				}else
 				{
 					JOptionPane.showMessageDialog(null, "로그인 실패");
-				}
+				}				
 				
-				
-			}
-			
-				
-			 
+			}			 
 		 }
 		 if(e.getSource() == exit) {
 			 System.out.println("종료 버튼 누름!");
 			 System.exit(-1);
 		 }
-		
-	}
-	
+		 
+		 //전체보기를 누르면?
+		 if(e.getSource() ==bt1) {
+			 System.out.println("전체보기 누름!");
+			 try {
+					pstmt = conn.prepareStatement("select * from music_tbl");
+					rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
+					String code=null; String title=null; String artist=null; String genre=null; String release=null; String keyword=null;
+					//행이 하나라서 while을 없애도 되는데 이떄까지 이렇게 했기때문에 헷갈리지말라고 이렇게 해준다.
+					while(rs.next()) {
+						code=rs.getString("music_code"); System.out.print(code+"\t");
+						title=rs.getString("music_title"); System.out.print(title+"\t");
+						artist=rs.getString("music_artist"); System.out.print(artist+"\t");
+						genre=rs.getString("music_genre"); System.out.print(genre+"\t");
+						release=rs.getString("music_release"); System.out.print(release+"\t");
+						keyword=rs.getString("music_keyword"); System.out.print(keyword+"\t\n");
+					}
+					
+					
+					
+					
+					
+				} catch(Exception e1) { e1.printStackTrace(); 
+				} finally {
+					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
+					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
+				}
+			 
+		 }
+	}	
 	
 }
