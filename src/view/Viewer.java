@@ -77,12 +77,14 @@ public class Viewer {
 					System.out.println("음악 조회!");					
 					break;
 				case 2 :
-					System.out.println("음악코드|타이틀|장르|발매일");
-					int Music_Code = sc.nextInt();
+					System.out.println("음악코드|타이틀|가수|장르|발매일|키워드 >>");
+					String Music_Code = sc.next();
 					String Music_Title = sc.next();
+					String Music_Artist = sc.next();
 					String Music_Genre=sc.next();
-					String Music_Releaser=sc.next();
-					MusicDTO dto = new MusicDTO(Music_Code, Music_Title,Music_Genre,Music_Releaser);
+					String Music_Release=sc.next();
+					String Music_Keyword=sc.next();
+					MusicDTO dto = new MusicDTO(Music_Code, Music_Title,Music_Artist,Music_Genre,Music_Release,Music_Keyword);
 					boolean result = controller.SubControllerEX("MUSIC", 2, dto);
 					if(result) System.out.println("INSERT 성공");
 					else System.out.println("INSERT 실패!");

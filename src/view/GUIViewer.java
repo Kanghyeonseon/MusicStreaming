@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import controller.FrontController;
 import domain.DAO;
+import domain.MusicDAO;
 import dto.AuthDTO;
 import dto.MusicDTO;
 
@@ -26,12 +27,8 @@ public class GUIViewer extends DAO implements ActionListener {
 	FrontController controller =new FrontController();
 	
 	//로그인 창 관련 
-	JFrame loginmenu;
-	JTextField id;
-	JTextField pw;
-	JButton login;
-	JButton exit;	
-	JRadioButton employee;
+	JFrame loginmenu; JTextField id; JTextField pw; JButton login;
+	JButton exit; JRadioButton employee;
 	JRadioButton member;
 	JLabel emp;
 	JLabel mem;
@@ -50,7 +47,6 @@ public class GUIViewer extends DAO implements ActionListener {
 	JTextArea area1; JTextArea area2; JTextArea area3; JTextArea area4; JTextArea area5; JTextArea area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
 	JTextArea area7;
-	
 	
 	//회원 메뉴 관련
 	JFrame membermenu;
@@ -128,6 +124,7 @@ public class GUIViewer extends DAO implements ActionListener {
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 		
+		
 		//버튼들 추가
 		bt1 = new JButton("전체음악검색"); bt1.setBounds(350, 20, 120,30); bt1.addActionListener(this);
 		bt2 = new JButton("음악추가"); bt2.setBounds(350, 60, 120,30); bt2.addActionListener(this);
@@ -165,6 +162,9 @@ public class GUIViewer extends DAO implements ActionListener {
 		membermenu.setBounds(100,100,500,500);
 		membermenu.setVisible(true);
 	}
+	
+	MusicDAO dao = new MusicDAO();
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -212,31 +212,37 @@ public class GUIViewer extends DAO implements ActionListener {
 		 //전체보기를 누르면?
 		 if(e.getSource() ==bt1) {
 			 System.out.println("전체보기 누름!");
+			 
 			 try {
 					pstmt = conn.prepareStatement("select * from music_tbl");
 					rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
 					String code=null; String title=null; String artist=null; String genre=null; String release=null; String keyword=null;
 					//행이 하나라서 while을 없애도 되는데 이떄까지 이렇게 했기때문에 헷갈리지말라고 이렇게 해준다.
+					System.out.println("코드\t제목\t가수\t");
 					while(rs.next()) {
-						code=rs.getString("music_code"); System.out.print(code+"\t");
-						title=rs.getString("music_title"); System.out.print(title+"\t");
-						artist=rs.getString("music_artist"); System.out.print(artist+"\t");
-						genre=rs.getString("music_genre"); System.out.print(genre+"\t");
-						release=rs.getString("music_release"); System.out.print(release+"\t");
-						keyword=rs.getString("music_keyword"); System.out.print(keyword+"\t\n");
+						code=rs.getString("music_code"); 
+						title=rs.getString("music_title"); 
+						artist=rs.getString("music_artist");
+						genre=rs.getString("music_genre");
+						release=rs.getString("music_release"); 
+						keyword=rs.getString("music_keyword");
+						area7.append(code+"\t"+title+"\t"+artist+"\t"+genre+"\t"+release+"\t"+keyword+"\n");
 					}
-					
-					
-					
-					
-					
 				} catch(Exception e1) { e1.printStackTrace(); 
 				} finally {
 					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
 					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
 				}
-			 
 		 }
-	}	
-	
+		 if(e.getSource()==bt2) {
+			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
+					,area4.getText(),area5.getText(),area6.getText());
+			boolean r2 = controller.SubControllerEX("MUSIC", 2, dto);
+			if(r2) {
+				System.out.println("INSERT성공!");
+			}
+		 }
+		 
+		 
+	}
 }

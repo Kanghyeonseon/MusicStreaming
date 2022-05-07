@@ -36,11 +36,13 @@ public class MusicDAO extends DAO {
 		public boolean Insert(MusicDTO dto) {
 				//전달이 잘 됐는지 boolean형으로 알려준다.
 			try {
-				pstmt = conn.prepareStatement("insert into music_tbl values(?,?,?,?)");
-				pstmt.setInt(1, dto.getMusic_Code());
+				pstmt = conn.prepareStatement("insert into music_tbl values(?,?,?,?,?,?)");
+				pstmt.setString(1, dto.getMusic_Code());
 				pstmt.setString(2, dto.getMusic_Title());
-				pstmt.setString(3, dto.getMusic_Genre());
-				pstmt.setString(4, dto.getMusic_Release());
+				pstmt.setString(3, dto.getMusic_Artist());
+				pstmt.setString(4, dto.getMusic_Genre());
+				pstmt.setString(5, dto.getMusic_Release());
+				pstmt.setString(6, dto.getMusic_Keyword());
 				int result = pstmt.executeUpdate();				
 				if(result!=0) { return true; }
 				

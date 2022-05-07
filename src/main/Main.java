@@ -9,6 +9,5 @@ public class Main {
 //		Viewer view1 = new Viewer();
 //		view1.LoginMenu();
 		new GUIViewer();
-		
 	}
 }
