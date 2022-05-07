@@ -16,6 +16,11 @@ public class MusicService {
 	public boolean Update(MusicDTO dto) {
 		return dao.Update(dto);
 	}
+	
+	public boolean Delete(MusicDTO dto) {
+		return dao.Delete(dto);
+	}
+	
 
 //	public boolean Select(MusicDTO dto) {
 //		return dao.Select(dto);

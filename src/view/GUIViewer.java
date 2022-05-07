@@ -269,6 +269,18 @@ public class GUIViewer extends DAO implements ActionListener {
 					System.out.println("UPDATE 성공!");
 				}
 		 }
+		 if(e.getSource()==bt4) {
+			 System.out.println("삭제버튼 누름!");
+			 MusicDTO dto = new MusicDTO(area1.getText());
+			boolean r2 = controller.SubControllerEX("MUSIC", 4, dto);
+				if(r2) {
+					System.out.println("DELETE 성공!");
+				}
+		 }
+		 if(e.getSource()==bt5) {
+			 System.exit(-1);
+		 }
+		 
 		 
 		 
 	}

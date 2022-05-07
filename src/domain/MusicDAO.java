@@ -73,15 +73,29 @@ public class MusicDAO extends DAO {
 			} catch(Exception e) {
 			e.printStackTrace();
 			} finally {
-			try { pstmt.close(); } catch(Exception e2) {e2.printStackTrace(); }
-			try { conn.close(); } catch (Exception e1) { e1.printStackTrace(); }
+				try { pstmt.close(); } catch(Exception e) {e.printStackTrace(); }
+				try { conn.close(); } catch (Exception e) { e.printStackTrace(); }
 			}
 			
 			return false;
 			
 		}
-		//도서정보 삭제(num : 4)
-		public void Delete() {}
+		public boolean Delete(MusicDTO dto) {
+			try {
+				pstmt=conn.prepareStatement("delete from music_tbl where music_code=?");
+				pstmt.setString(1,  dto.getMusic_Code());		
+				int result = pstmt.executeUpdate();
+				if(result!=0) { System.out.println("삭제 성공!"); return true;}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try { pstmt.close(); } catch(Exception e) {e.printStackTrace(); }
+				try { conn.close(); } catch (Exception e) { e.printStackTrace(); }
+			}
+			
+
+			return false;
+		}
 		
 	}
 	//연결객체 생성하는 작업까지만 한다. (finally이하 구문을 지워준다.)

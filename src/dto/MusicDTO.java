@@ -7,6 +7,10 @@ public class MusicDTO extends DTO {
 	private String Music_Genre;
 	private String Music_Release;
 	private String Music_Keyword;
+	public MusicDTO(String music_code) {
+		super();
+		Music_Code=music_code;
+	}
 	public MusicDTO(String music_Code, String music_Title, String music_Artist, String music_Genre,
 			String music_Release, String music_Keyword) {
 		super();
