@@ -12,6 +12,10 @@ public class MusicService {
 		//전달받은 dto를 dao로 넘기고 반환되는 값을 Controller로 true/false로 연결
 		
 	}
+	
+	public boolean Update(MusicDTO dto) {
+		return dao.Update(dto);
+	}
 
 //	public boolean Select(MusicDTO dto) {
 //		return dao.Select(dto);

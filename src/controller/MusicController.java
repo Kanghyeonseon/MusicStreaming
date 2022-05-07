@@ -16,7 +16,8 @@ public class MusicController implements SubController {
 //			return service.Select(bdto);
 		} else if(num==2) {
 			return service.Insert(bdto);
-		} else if(num==3) {		
+		} else if(num==3) {	
+			return service.Update(bdto);
 		} else if(num==4) {			
 		}		
 		return false;

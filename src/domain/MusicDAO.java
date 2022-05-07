@@ -54,11 +54,30 @@ public class MusicDAO extends DAO {
 			return false;
 		}
 		//도서정보 수정(num : 3)
-		public void Update(MusicDTO dto) {
+		public boolean Update(MusicDTO dto) {
+			try {
+			pstmt = conn.prepareStatement("update music_tbl set music_title=?, music_artist=?, music_genre=?, music_release=?, music_keyword=? where music_code=?");
+			//조건절
+			pstmt.setString(6, dto.getMusic_Code());
+			pstmt.setString(1, dto.getMusic_Title());
+			pstmt.setString(2, dto.getMusic_Artist());
+			pstmt.setString(3, dto.getMusic_Genre());
+			pstmt.setString(4, dto.getMusic_Release());
+			pstmt.setString(5, dto.getMusic_Keyword());
 			
+			//SQL전송
+			int result = pstmt.executeUpdate();
+			if(result!=0) { System.out.println("수정 성공!"); return true;}
+			else { System.out.println("수정 실패!"); }
 			
+			} catch(Exception e) {
+			e.printStackTrace();
+			} finally {
+			try { pstmt.close(); } catch(Exception e2) {e2.printStackTrace(); }
+			try { conn.close(); } catch (Exception e1) { e1.printStackTrace(); }
+			}
 			
-			
+			return false;
 			
 		}
 		//도서정보 삭제(num : 4)

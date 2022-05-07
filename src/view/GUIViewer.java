@@ -213,6 +213,24 @@ public class GUIViewer extends DAO implements ActionListener {
 		 if(e.getSource() ==bt1) {
 			 System.out.println("전체보기 누름!");
 			 
+			 
+			 /*
+			 try {
+				 rs = pstmt.executeQuery();
+				 while(rs.next()) {
+				 MusicDTO dto = new MusicDTO(rs.getString("music_code"),rs.getString("music_title"),rs.getString("music_artist")
+							,rs.getString("music_genre"),rs.getString("music_release"),rs.getString("music_keyword"));
+				 
+				 }//while끝
+				 boolean r2 = controller.SubControllerEX("MUSIC", 1, dto);
+			 } //try끝
+			 catch (Exception e2) { e2.printStackTrace(); }
+			 finally {
+					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
+					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
+			 */
+			 
+			 
 			 try {
 					pstmt = conn.prepareStatement("select * from music_tbl");
 					rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
@@ -233,6 +251,7 @@ public class GUIViewer extends DAO implements ActionListener {
 					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
 					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
 				}
+				
 		 }
 		 if(e.getSource()==bt2) {
 			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
@@ -241,6 +260,14 @@ public class GUIViewer extends DAO implements ActionListener {
 			if(r2) {
 				System.out.println("INSERT성공!");
 			}
+		 }
+		 if(e.getSource()==bt3) {
+			 MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
+						,area4.getText(),area5.getText(),area6.getText());
+				boolean r2 = controller.SubControllerEX("MUSIC", 3, dto);
+				if(r2) {
+					System.out.println("UPDATE 성공!");
+				}
 		 }
 		 
 		 
