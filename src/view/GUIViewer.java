@@ -46,7 +46,7 @@ public class GUIViewer  implements ActionListener {
 	JTextArea area;
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
-	JTextArea area1; JTextArea area2; JTextArea area3; JTextArea area4; JTextArea area5; JTextArea area6;
+	JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
 	JTextArea area7;
 	
@@ -136,12 +136,12 @@ public class GUIViewer  implements ActionListener {
 		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5);
 		
 		//텍스트필드들 추가
-		area1 = new JTextArea("코드"); area1.setBounds(20, 20, 300, 30); 
-		area2 = new JTextArea(""); area2.setBounds(20, 60, 300, 30); 
-		area3 = new JTextArea(""); area3.setBounds(20, 100, 300, 30); 
-		area4 = new JTextArea(""); area4.setBounds(20, 140, 300, 30); 
-		area5 = new JTextArea(""); area5.setBounds(20, 180, 300, 30); 
-		area6 = new JTextArea(""); area6.setBounds(20, 220, 300, 30); 
+		area1 = new JTextField("코드"); area1.setBounds(20, 20, 300, 30); 
+		area2 = new JTextField(""); area2.setBounds(20, 60, 300, 30); 
+		area3 = new JTextField(""); area3.setBounds(20, 100, 300, 30); 
+		area4 = new JTextField(""); area4.setBounds(20, 140, 300, 30); 
+		area5 = new JTextField(""); area5.setBounds(20, 180, 300, 30); 
+		area6 = new JTextField(""); area6.setBounds(20, 220, 300, 30); 
 		pan.add(area1); pan.add(area2); pan.add(area3); pan.add(area4); pan.add(area5); pan.add(area6);
 		
 		//스크롤추가!
