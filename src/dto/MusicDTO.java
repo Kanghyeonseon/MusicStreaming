@@ -20,9 +20,7 @@ public class MusicDTO extends DTO {
 		Music_Keyword = music_Keyword;
 	}
 	
-	public MusicDTO(String text) {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public String getMusic_Code() {
 		return Music_Code;

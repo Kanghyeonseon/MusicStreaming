@@ -1,7 +1,10 @@
 package view;
 
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -10,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -25,7 +29,7 @@ import dto.AuthDTO;
 import dto.MusicDTO;
 import service.MusicService;
 
-public class GUIViewer extends DAO implements ActionListener {
+public class GUIViewer extends DAO implements ActionListener, java.awt.event.KeyListener {
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -48,7 +52,6 @@ public class GUIViewer extends DAO implements ActionListener {
 	JButton update;
 	JButton delete;
 	JButton select;
-	JTextArea area;
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
 	JTextArea area1; JTextArea area2; JTextArea area3; JTextArea area4; JTextArea area5; JTextArea area6;
@@ -77,7 +80,7 @@ public class GUIViewer extends DAO implements ActionListener {
 		pan.setLayout(null);
 		
 		id = new JTextField("ID");
-		pw = new JTextField("PW");
+		pw = new JPasswordField("PW");
 		
 		
 		
@@ -112,6 +115,7 @@ public class GUIViewer extends DAO implements ActionListener {
 		//리스너
 		login.addActionListener(this);
 		exit.addActionListener(this);
+		
 		
 		pan.add(id);
 		pan.add(pw);
@@ -174,8 +178,12 @@ public class GUIViewer extends DAO implements ActionListener {
 		membermenu.setVisible(true);
 	}
 	
+
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		 if(e.getSource() == login ) {
 			System.out.println("로그인 버튼 누름!");
 			
@@ -213,8 +221,10 @@ public class GUIViewer extends DAO implements ActionListener {
 		
 		 //전체보기
 		 if(e.getSource() ==bt1) {
+					
 			
-			}
+			 
+    }
 		//음악 추가
 		 if(e.getSource() == bt2) {
 	
@@ -248,18 +258,39 @@ public class GUIViewer extends DAO implements ActionListener {
 		 }
 		 //음악 삭제
 		 if(e.getSource()==bt4) {
-			 System.out.println("delete");
-			 
-			 MusicDTO dto = new MusicDTO(area1.getText());
-			 dto.setMusic_Code(bt4.getText());
-			 boolean boo = controller.SubControllerEX("MUSIC", 4, dto);
-			 if(boo) {
-				 System.out.println("delete success");
-			 }
+//			 System.out.println("delete");
+//			 
+//			 MusicDTO dto = new MusicDTO(area1.getText());
+//			 
+//			 boolean boo = controller.SubControllerEX("MUSIC", 4, dto);
+//			 if(boo) {
+//				 System.out.println("delete success");
+//			 }
 		 }
 		 //종료
 		 if(e.getSource()==bt5) {
 			 System.exit(-1);
 		 }
-	  } 
+		 if(e.getSource()==exit) {
+			 System.exit(-1);
+		 }
+	}
+	  
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
+		
+	}
+    @Override
+	public void keyPressed(KeyEvent e) {
+   	
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	} 
 	}		
