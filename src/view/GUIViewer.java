@@ -15,10 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
+
 import controller.FrontController;
+import controller.MusicController;
 import domain.DAO;
+import domain.MusicDAO;
 import dto.AuthDTO;
 import dto.MusicDTO;
+import service.MusicService;
 
 public class GUIViewer extends DAO implements ActionListener {
 	
@@ -35,8 +40,7 @@ public class GUIViewer extends DAO implements ActionListener {
 	JRadioButton member;
 	JLabel emp;
 	JLabel mem;
-	ButtonGroup radiogroup;
-	
+	ButtonGroup radiogroup;	
 	
 	//직원 메뉴 관련 
 	JFrame employeemenu;
@@ -74,6 +78,9 @@ public class GUIViewer extends DAO implements ActionListener {
 		
 		id = new JTextField("ID");
 		pw = new JTextField("PW");
+		
+		
+		
 		
 		login = new JButton("로그인");
 		exit = new JButton("종료");
@@ -137,16 +144,17 @@ public class GUIViewer extends DAO implements ActionListener {
 		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5);
 		
 		//텍스트필드들 추가
-		area1 = new JTextArea("코드"); area1.setBounds(20, 20, 300, 30); 
-		area2 = new JTextArea(""); area2.setBounds(20, 60, 300, 30); 
-		area3 = new JTextArea(""); area3.setBounds(20, 100, 300, 30); 
-		area4 = new JTextArea(""); area4.setBounds(20, 140, 300, 30); 
-		area5 = new JTextArea(""); area5.setBounds(20, 180, 300, 30); 
-		area6 = new JTextArea(""); area6.setBounds(20, 220, 300, 30); 
+		area1 = new JTextArea("CODE"); area1.setBounds(20, 20, 300, 30); 
+		area2 = new JTextArea("TITLE"); area2.setBounds(20, 60, 300, 30); 
+		area3 = new JTextArea("SINGER"); area3.setBounds(20, 100, 300, 30); 
+		area4 = new JTextArea("GENRE"); area4.setBounds(20, 140, 300, 30); 
+		area5 = new JTextArea("RELEASE"); area5.setBounds(20, 180, 300, 30); 
+		area6 = new JTextArea("KEYWORD"); area6.setBounds(20, 220, 300, 30); 
 		pan.add(area1); pan.add(area2); pan.add(area3); pan.add(area4); pan.add(area5); pan.add(area6);
 		
 		//스크롤추가!
-		area7 = new JTextArea(""); 
+		MusicDAO dao = new MusicDAO();
+		area7 = new JTextArea(); 
 		JScrollPane scroll = new JScrollPane(area7);
 		scroll.setBounds(20, 270, 450, 170);
 		pan.add(scroll);		
@@ -176,8 +184,7 @@ public class GUIViewer extends DAO implements ActionListener {
 			//-Login창 숨김
 			//-Employee창 띄움
 			//로그인 실패시 다이얼로그 띄움
-			if(employee.isSelected())
-			{
+			if(employee.isSelected()) {
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
 				boolean r = controller.SubControllerEX("AUTH", 2, dto);
 				if(r)
@@ -189,8 +196,7 @@ public class GUIViewer extends DAO implements ActionListener {
 					JOptionPane.showMessageDialog(null, "로그인 실패");
 				}
 				
-			}else if(member.isSelected())
-			{
+			}else if(member.isSelected()) {
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
 				boolean r = controller.SubControllerEX("AUTH", 1, dto);
 				if(r)
@@ -204,39 +210,56 @@ public class GUIViewer extends DAO implements ActionListener {
 				
 			}			 
 		 }
-		 if(e.getSource() == exit) {
-			 System.out.println("종료 버튼 누름!");
+		
+		 //전체보기
+		 if(e.getSource() ==bt1) {
+			
+			}
+		//음악 추가
+		 if(e.getSource() == bt2) {
+	
+			 System.out.println("insert");
+			
+			 MusicDTO dto = new MusicDTO(area1.getText(), area2.getText(), area3.getText(), area4.getText(), area5.getText(), area6.getText());
+			 
+			 dto.setMusic_Code(area1.getText());
+			 dto.setMusic_Title(area2.getText());
+			 dto.setMusic_Artist(area3.getText());
+			 dto.setMusic_Genre(area4.getText());
+			 dto.setMusic_Release(area5.getText());
+			 dto.setMusic_Keyword(area6.getText());
+		
+			 boolean boo= controller.SubControllerEX("MUSIC", 2, dto);
+			 
+			 if(boo) {
+				 System.out.println("insert success");
+			 }
+		 }		
+		 //음악 수정
+		 if(e.getSource()==bt3) {
+			 System.out.println("update");
+			 MusicDTO dto = new MusicDTO(area1.getText(), area2.getText(), area3.getText()
+					                     ,area4.getText(),area5.getText(),area6.getText());
+			 
+			 boolean boo = controller.SubControllerEX("MUSIC", 3, dto);
+			 if(boo) {
+				 System.out.println("update success");
+			 }			 
+		 }
+		 //음악 삭제
+		 if(e.getSource()==bt4) {
+			 System.out.println("delete");
+			 
+			 MusicDTO dto = new MusicDTO(area1.getText());
+			 dto.setMusic_Code(bt4.getText());
+			 boolean boo = controller.SubControllerEX("MUSIC", 4, dto);
+			 if(boo) {
+				 System.out.println("delete success");
+			 }
+		 }
+		 //종료
+		 if(e.getSource()==bt5) {
 			 System.exit(-1);
 		 }
-		 
-		 //전체보기를 누르면?
-		 if(e.getSource() ==bt1) {
-			 System.out.println("전체보기 누름!");
-			 try {
-					pstmt = conn.prepareStatement("select * from music_tbl");
-					rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
-					String code=null; String title=null; String artist=null; String genre=null; String release=null; String keyword=null;
-					//행이 하나라서 while을 없애도 되는데 이떄까지 이렇게 했기때문에 헷갈리지말라고 이렇게 해준다.
-					while(rs.next()) {
-						code=rs.getString("music_code"); System.out.print(code+"\t");
-						title=rs.getString("music_title"); System.out.print(title+"\t");
-						artist=rs.getString("music_artist"); System.out.print(artist+"\t");
-						genre=rs.getString("music_genre"); System.out.print(genre+"\t");
-						release=rs.getString("music_release"); System.out.print(release+"\t");
-						keyword=rs.getString("music_keyword"); System.out.print(keyword+"\t\n");
-					}
-					
-					
-					
-					
-					
-				} catch(Exception e1) { e1.printStackTrace(); 
-				} finally {
-					try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
-					try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
-				}
-			 
-		 }
-	}	
-	
-}
+	  } 
+	}		
