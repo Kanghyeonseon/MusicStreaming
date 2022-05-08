@@ -74,7 +74,7 @@ public class Viewer {
 
 			switch(num) {
 				case 1 : 
-					System.out.println("음악 조회!");					
+					System.out.println("음악 조회");					
 					break;
 				case 2 :
 					System.out.println("음악코드|타이틀|장르|발매일");

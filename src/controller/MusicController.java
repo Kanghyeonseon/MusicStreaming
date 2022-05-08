@@ -10,15 +10,15 @@ public class MusicController implements SubController {
 	
 	@Override
 	public boolean execute(int num, DTO dto) {
-		MusicDTO bdto = (MusicDTO) dto;// 다운캐스팅을 해주지않으면 받을 수 없다.
+		MusicDTO Mdto = (MusicDTO) dto;// 다운캐스팅을 해주지않으면 받을 수 없다.
 		//1.조회, 2.삽입, 3.수정, 4.삭제		
 		if(num==1) {	
-			return service.Select(bdto);
+			return service.Select(Mdto);
 		} else if(num==2) {
-			return service.Insert(bdto);
+			return service.Insert(Mdto);
 		} else if(num==3) {		
-			return service.Update(bdto);
+			return service.Update(Mdto);
 		} else if(num==4) {			
-		}	return service.Delete(bdto);
+		}	return service.Delete(Mdto);
 	}
 }

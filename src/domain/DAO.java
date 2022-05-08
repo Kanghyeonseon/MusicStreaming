@@ -17,7 +17,7 @@ public class DAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver Loading Success!");
 			conn=DriverManager.getConnection(url, id, pw);
-			System.out.println("DB Connected..!");
+			System.out.println("DB Connected...!");
 		}
 		 catch( Exception e) {
 			e.printStackTrace(); 

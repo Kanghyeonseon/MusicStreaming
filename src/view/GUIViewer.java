@@ -242,7 +242,7 @@ public class GUIViewer extends DAO implements ActionListener, java.awt.event.Key
 			 boolean boo= controller.SubControllerEX("MUSIC", 2, dto);
 			 
 			 if(boo) {
-				 System.out.println("insert success");
+				 System.out.println("insert success!");
 			 }
 		 }		
 		 //음악 수정
@@ -253,7 +253,7 @@ public class GUIViewer extends DAO implements ActionListener, java.awt.event.Key
 			 
 			 boolean boo = controller.SubControllerEX("MUSIC", 3, dto);
 			 if(boo) {
-				 System.out.println("update success");
+				 System.out.println("update success!");
 			 }			 
 		 }
 		 //음악 삭제
