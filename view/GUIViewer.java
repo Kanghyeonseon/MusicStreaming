@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -29,8 +28,6 @@ import dto.DTO;
 import dto.MusicDTO;
 
 public class GUIViewer extends JFrame implements ActionListener,KeyListener {
-	
-	// 준영A추가!!
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -91,8 +88,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		pan.setLayout(null);
 		
 		id = new JTextField("admin");
-		pw = new JPasswordField("1234"); 
-		
+		pw = new JTextField("1234");
 		id.addKeyListener(this);
 		id.setFocusTraversalKeysEnabled(false);
 		
