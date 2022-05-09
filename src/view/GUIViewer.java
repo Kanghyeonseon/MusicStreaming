@@ -48,6 +48,7 @@ public class GUIViewer  implements ActionListener {
 	JTextArea area;
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
+	JButton bt6;
 	public JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
 	public static JTextArea area7;
@@ -137,7 +138,8 @@ public class GUIViewer  implements ActionListener {
 		bt3 = new JButton("음악수정"); bt3.setBounds(350, 100, 120,30); bt3.addActionListener(this);
 		bt4 = new JButton("음악삭제"); bt4.setBounds(350, 140, 120,30); bt4.addActionListener(this);
 		bt5 = new JButton("종료"); bt5.setBounds(350, 220, 120,30); bt5.addActionListener(this);		
-		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5);
+		bt6 = new JButton("초기화"); bt6.setBounds(350, 180,120,30); bt6.addActionListener(this);
+		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5); pan.add(bt6);
 		
 		//텍스트필드들 추가
 		area1 = new JTextField("코드"); area1.setBounds(20, 20, 300, 30); 
@@ -222,10 +224,9 @@ public class GUIViewer  implements ActionListener {
 		 
 		 //전체보기를 누르면?
 		 if(e.getSource() ==bt1) {
+			area7.setText("");
 			System.out.println("전체보기 누름!");
-			MusicDAO dao = new MusicDAO();
 			MusicDTO dto = null;
-			dao.Select(dto);
 			boolean r2 = controller.SubControllerEX("MUSIC", 1,dto);
 			
 		 }
@@ -256,7 +257,15 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt5) {
 			 System.exit(-1);
 		 }
-		 
+		 if(e.getSource()==bt6) {
+			 area1.setText("");
+			 area2.setText("");
+			 area3.setText("");
+			 area4.setText("");
+			 area5.setText("");
+			 area6.setText("");
+			 area7.setText("");
+		 }
 		 
 		 
 	}
