@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.Component;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -55,8 +55,16 @@ public class GUIViewer extends JFrame implements ActionListener {
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
 	public static JTextArea area7;
 	
+	//레이블
+	JLabel label1; JLabel label2; JLabel label3; 
+	JLabel label4; JLabel label5; JLabel label6;
+	
+	
 	//회원 메뉴 관련
 	JFrame membermenu;
+	JButton button1;
+	JTextArea meberArea;
+	JScrollPane memberScroll;
 
 	private DTO dto;
  
@@ -193,41 +201,72 @@ public class GUIViewer extends JFrame implements ActionListener {
 		
 		
 		//버튼들 추가
-		bt1 = new JButton("전체음악검색"); bt1.setBounds(350, 20, 120,30); bt1.addActionListener(this);
-		bt2 = new JButton("음악추가"); bt2.setBounds(350, 60, 120,30); bt2.addActionListener(this);
-		bt3 = new JButton("음악수정"); bt3.setBounds(350, 100, 120,30); bt3.addActionListener(this);
-		bt4 = new JButton("음악삭제"); bt4.setBounds(350, 140, 120,30); bt4.addActionListener(this);
-		bt5 = new JButton("종료"); bt5.setBounds(350, 220, 120,30); bt5.addActionListener(this);		
-		bt6 = new JButton("초기화"); bt6.setBounds(350, 180,120,30); bt6.addActionListener(this);
+		bt1 = new JButton("전체음악검색"); bt1.setBounds(380, 20, 120,30); bt1.addActionListener(this);
+		bt2 = new JButton("음악추가"); bt2.setBounds(380, 66, 120,30); bt2.addActionListener(this);
+		bt3 = new JButton("음악수정"); bt3.setBounds(380, 111, 120,30); bt3.addActionListener(this);
+		bt4 = new JButton("음악삭제"); bt4.setBounds(380, 156, 120,30); bt4.addActionListener(this);
+		bt5 = new JButton("종료"); bt5.setBounds(380, 246, 120,30); bt5.addActionListener(this);		
+		bt6 = new JButton("초기화"); bt6.setBounds(380, 201,120,30); bt6.addActionListener(this);
 		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5); pan.add(bt6);
 		
 		//텍스트필드들 추가
-		area1 = new JTextField("코드"); area1.setBounds(20, 20, 300, 30); 
-		area2 = new JTextField(""); area2.setBounds(20, 60, 300, 30); 
-		area3 = new JTextField(""); area3.setBounds(20, 100, 300, 30); 
-		area4 = new JTextField(""); area4.setBounds(20, 140, 300, 30); 
-		area5 = new JTextField(""); area5.setBounds(20, 180, 300, 30); 
-		area6 = new JTextField(""); area6.setBounds(20, 220, 300, 30); 
-		pan.add(area1); pan.add(area2); pan.add(area3); pan.add(area4); pan.add(area5); pan.add(area6);
+		area1 = new JTextField("코드"); area1.setBounds(20, 20, 330, 30); 
+		area2 = new JTextField(""); area2.setBounds(20, 66, 330, 30); 
+		area3 = new JTextField(""); area3.setBounds(20, 111, 330, 30); 
+		area4 = new JTextField(""); area4.setBounds(20, 156, 330, 30); 
+		area5 = new JTextField(""); area5.setBounds(20, 201, 330, 30); 
+		area6 = new JTextField(""); area6.setBounds(20, 246, 330, 30); 
+		
+		//레이블 추가
+		label1 = new JLabel("Code"); label1.setBounds(20, 5, 30, 15);
+		label2 = new JLabel("Tilte"); label2.setBounds(20, 52, 50, 15);
+		label3 = new JLabel("Artist"); label3.setBounds(20, 97, 50, 15);
+		label4 = new JLabel("Gerne"); label4.setBounds(20, 142, 50, 15);
+		label5 = new JLabel("Release"); label5.setBounds(20, 187, 50, 15);
+		label6 = new JLabel("Keyword"); label6.setBounds(20, 232, 50, 15);
+		
+		
+		pan.add(label1); 	pan.add(area1); 
+		pan.add(label2); 	pan.add(area2); 
+		pan.add(label3);	pan.add(area3); 
+		pan.add(label4);	pan.add(area4); 
+		pan.add(label5);	pan.add(area5); 
+		pan.add(label6);	pan.add(area6); 
+		
 		
 		//스크롤추가!
 		area7 = new JTextArea("");  
 		JScrollPane scroll = new JScrollPane(area7);
-		scroll.setBounds(20, 270, 450, 170);
+		scroll.setBounds(20, 290, 480, 170);
 		pan.add(scroll);		
 		
 		employeemenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		employeemenu.setBounds(100,100,500,500);
+		employeemenu.setBounds(100,100,535,510);
 		employeemenu.add(pan);
 		employeemenu.setVisible(true);
 	}
 	
+	
 	//회원 메뉴 
 	void Member() {
-		membermenu = new JFrame("회원메뉴");		 
+		membermenu = new JFrame("회원메뉴");		
+				
+		JPanel pan = new JPanel();
+		pan.setLayout(null);
+		
+		button1 = new JButton("전체음악검색"); button1.setBounds(350, 20, 120,30);
+				
+		pan.add(button1);
+		
+		meberArea = new JTextArea(""); 
+		JScrollPane scroll = new JScrollPane(meberArea);
+		scroll.setBounds(17, 270, 480, 170);
+		pan.add(scroll);
+		
 		
 		membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		membermenu.setBounds(100,100,500,500);
+		membermenu.setBounds(100,100,530,500);
+		membermenu.add(pan);	
 		membermenu.setVisible(true);
 	}
 	@Override
