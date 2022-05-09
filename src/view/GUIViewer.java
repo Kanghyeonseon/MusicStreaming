@@ -172,7 +172,7 @@ public class GUIViewer  implements ActionListener {
 		pan.add(label3);	pan.add(area3); 
 		pan.add(label4);	pan.add(area4); 
 		pan.add(label5);	pan.add(area5); 
-		pan.add(label6);	pan.add(area6);
+		pan.add(label6);	pan.add(area6); 
 		
 		
 		//스크롤추가!
@@ -206,6 +206,7 @@ public class GUIViewer  implements ActionListener {
 		
 		membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		membermenu.setBounds(100,100,500,500);
+		membermenu.add(pan);	
 		membermenu.setVisible(true);
 	}
 	
