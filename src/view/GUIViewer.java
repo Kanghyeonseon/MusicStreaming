@@ -211,7 +211,7 @@ public class GUIViewer extends JFrame implements ActionListener {
 		pan.add(area1); pan.add(area2); pan.add(area3); pan.add(area4); pan.add(area5); pan.add(area6);
 		
 		//스크롤추가!
-		area7 = new JTextArea(""); 
+		area7 = new JTextArea("");  
 		JScrollPane scroll = new JScrollPane(area7);
 		scroll.setBounds(20, 270, 450, 170);
 		pan.add(scroll);		
