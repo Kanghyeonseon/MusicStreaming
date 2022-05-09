@@ -9,34 +9,31 @@ import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.xdevapi.Statement;
 
 import dto.MusicDTO;
+import view.GUIViewer;
 
 
 
 public class MusicDAO extends DAO {
-	public ResultSet Select() {
+	public boolean Select(MusicDTO dto) {
 		
 		try {
 			pstmt = conn.prepareStatement("select * from music_tbl");			
-			String code=null,title=null, artist=null, genre=null, release=null, keyword=null;
 			rs = pstmt.executeQuery();
-			return rs;
+			while(rs.next())
+			{
+				GUIViewer.area7.append(
+						rs.getString("Music_Code")+"\t"+rs.getString("Music_Title")
+						+"\t"+rs.getString("Music_Artist")+"\t\t"+rs.getString("Music_Genre")
+						+"\t\t"+rs.getString("Music_Release")+rs.getString("Music_Keyword")
+						);				
+			}
+			return true;
 			
-//			while(rs.next()) {
-//				code=rs.getString("Music_Code");
-//				title=rs.getString("Music_Title");
-//				artist=rs.getString("Music_Genre");
-//				genre=rs.getString("Music_Genre");
-//				release=rs.getString("Music_Release");
-//				keyword=rs.getString("Music_Keyword");
-//				System.out.printf("%s\t%s\t%s\t%s\t%s\n",code,title,artist,genre,release,keyword);
-//				
-//			}
-//			return true;
 		} catch(Exception e1) { e1.printStackTrace(); 
 		} finally {
 			try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
 			try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
-		} return null;
+		} return false;
 	}
 		
 		public boolean Insert(MusicDTO dto) {

@@ -8,7 +8,7 @@ import view.GUIViewer;
 public class AuthController implements SubController{
 	AuthService service = new AuthService(); //집합 포함관계를 봐야한다.
 	 
-	public boolean execute(int num, DTO dto,GUIViewer viewer) {
+	public boolean execute(int num, DTO dto, GUIViewer viewer) {
 		AuthDTO adto  = (AuthDTO) dto; //다운캐스팅
 		
 		if(num==1) {   	  //멤버로그인

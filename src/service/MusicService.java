@@ -26,23 +26,9 @@ public class MusicService {
 	}
 	
 
-	public boolean Select(MusicDTO dto,GUIViewer view) {
-		ResultSet rs =  dao.Select();
-		try {
-			while(rs.next()) {
-			view.area7.append(rs.getString("Music_Code")+"  ");
-			view.area7.append(rs.getString("Music_Title")+ " ");
-			view.area7.append(rs.getString("Music_Genre")+" ");
-			view.area7.append(rs.getString("Music_Genre") + " ");
-			view.area7.append(rs.getString("Music_Release")+ " ");
-			view.area7.append(rs.getString("Music_Keyword")+ " ");
-			
-}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public boolean Select(MusicDTO dto) {
+		return dao.Select(dto);
 		
-		return false;
 	}
 	
 }

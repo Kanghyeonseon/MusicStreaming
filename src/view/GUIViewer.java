@@ -30,6 +30,7 @@ public class GUIViewer  implements ActionListener {
 	FrontController controller =new FrontController();
 	
 	//로그인 창 관련 
+	
 	JFrame loginmenu; JTextField id; JTextField pw; JButton login;
 	JButton exit; JRadioButton employee;
 	JRadioButton member;
@@ -49,7 +50,7 @@ public class GUIViewer  implements ActionListener {
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
 	public JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
-	public JTextArea area7;
+	public static JTextArea area7;
 	
 	//회원 메뉴 관련
 	JFrame membermenu;
@@ -222,10 +223,10 @@ public class GUIViewer  implements ActionListener {
 		 //전체보기를 누르면?
 		 if(e.getSource() ==bt1) {
 			System.out.println("전체보기 누름!");
-			boolean r = controller.SubControllerEX("MUSIC", 1, dto,this);
-			if(r) {
-				System.out.println("전체보기 성공!");
-			}
+			MusicDAO dao = new MusicDAO();
+			MusicDTO dto = null;
+			dao.Select(dto);
+			
 		 }
 		 if(e.getSource()==bt2) {
 			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
