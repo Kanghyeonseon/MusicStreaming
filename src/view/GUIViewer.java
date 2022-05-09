@@ -178,7 +178,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		btn1 = new JButton("회원가입");
 //		   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
 	 
-		comment.setBounds(35, 10, 300, 20);
+		comment.setBounds(35, 10, 300, 10);
 		idtext.setBounds(35,40,200,30);
 		idlabel.setBounds(10,40,200,30);
 		pwlabel.setBounds(10,80,200,30);
