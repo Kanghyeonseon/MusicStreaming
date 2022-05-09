@@ -30,7 +30,7 @@ import dto.MusicDTO;
 
 public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 	
-	// aaa
+	//추가!!!
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -53,7 +53,10 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 	
 	
 	//직원 메뉴 관련 
-	JFrame employeemenu;
+
+	JFrame employeemenu;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+	JFrame signupmenu;
+
 	JButton insert;
 	JButton update;
 	JButton delete;
