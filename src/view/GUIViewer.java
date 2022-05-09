@@ -224,7 +224,7 @@ public class GUIViewer extends JFrame implements ActionListener {
 	
 	//회원 메뉴 
 	void Member() {
-		membermenu = new JFrame("회원메뉴");		
+		membermenu = new JFrame("회원메뉴");		 
 		
 		membermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		membermenu.setBounds(100,100,500,500);
