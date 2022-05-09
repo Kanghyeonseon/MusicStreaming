@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,7 +30,7 @@ import dto.AuthDTO;
 import dto.DTO;
 import dto.MusicDTO;
 
-public class GUIViewer extends JFrame implements ActionListener,KeyListener {
+public class GUIViewer extends JFrame implements ActionListener,KeyListener,MouseListener {
 	
 	//추가!!!eee
 	
@@ -102,6 +104,8 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		
 		id = new JTextField("admin");
 		pw = new JPasswordField("1234"); 
+		id.addMouseListener(this);
+		pw.addMouseListener(this);
 		
 		id.addKeyListener(this);
 		id.setFocusTraversalKeysEnabled(false);
@@ -178,7 +182,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		btn1 = new JButton("회원가입");
 //		   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
 	 
-		comment.setBounds(35, 10, 300, 10);
+		comment.setBounds(35, 10, 300, 30);
 		idtext.setBounds(35,40,200,30);
 		idlabel.setBounds(10,40,200,30);
 		pwlabel.setBounds(10,80,200,30);
@@ -285,6 +289,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		membermenu.add(pan);	
 		membermenu.setVisible(true);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
             
@@ -417,6 +422,46 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource()==id) {
+			id.setText("");
+		}
+		if(e.getSource()==pw) {
+			pw.setText("");
+		}
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }
