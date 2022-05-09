@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dto.DTO;
+import view.GUIViewer;
 
 public class FrontController {
 	//서브컨트롤러 저장용

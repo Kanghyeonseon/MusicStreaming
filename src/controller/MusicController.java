@@ -3,6 +3,7 @@ package controller;
 import dto.DTO;
 import dto.MusicDTO;
 import service.MusicService;
+import view.GUIViewer;
 
 public class MusicController implements SubController {
 	MusicService service = new MusicService();

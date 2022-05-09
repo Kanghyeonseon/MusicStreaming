@@ -1,7 +1,11 @@
 package service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import domain.MusicDAO;
 import dto.MusicDTO;
+import view.GUIViewer;
 
 public class MusicService {
 	//멤버
@@ -23,7 +27,8 @@ public class MusicService {
 	
 
 	public boolean Select(MusicDTO dto) {
-		return dao.Select();
+		return dao.Select(dto);
+		
 	}
 	
 }
