@@ -3,6 +3,8 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,7 +27,7 @@ import dto.AuthDTO;
 import dto.DTO;
 import dto.MusicDTO;
 
-public class GUIViewer extends JFrame implements ActionListener {
+public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -87,6 +89,8 @@ public class GUIViewer extends JFrame implements ActionListener {
 		
 		id = new JTextField("admin");
 		pw = new JTextField("1234");
+		id.addKeyListener(this);
+		id.setFocusTraversalKeysEnabled(false);
 		
 		login  = new JButton("로그인");
 		exit   = new JButton("종료");
@@ -381,5 +385,29 @@ public class GUIViewer extends JFrame implements ActionListener {
 		 }
 		 
 		 
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==id) {
+			pw.requestFocus();
+		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==pw) {
+			id.requestFocus();
+		}
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
 	}
 }
