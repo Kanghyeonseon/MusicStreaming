@@ -1,41 +1,42 @@
 package domain;
 
-import java.sql.Connection;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
+import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.Statement;
 
 import dto.MusicDTO;
 
 
 
 public class MusicDAO extends DAO {
-	public boolean Select() {
+	public ResultSet Select() {
 		
 		try {
-			pstmt = conn.prepareStatement("select * from music_tbl");
-			rs = pstmt.executeQuery(); //select로 물어보면 result set으로 받아진다.
-			
+			pstmt = conn.prepareStatement("select * from music_tbl");			
 			String code=null,title=null, artist=null, genre=null, release=null, keyword=null;
-			while(rs.next()) {
-				code=rs.getString("Music_Code");
-				title=rs.getString("Music_Title");
-				artist=rs.getString("Music_Genre");
-				genre=rs.getString("Music_Genre");
-				release=rs.getString("Music_Release");
-				keyword=rs.getString("Music_Keyword");
-				System.out.printf("%s\t%s\t%s\t%s\t%s\n",code,title,artist,genre,release,keyword);
-				MusicDTO dto = new MusicDTO(code, title, artist, genre,	release, keyword);
-			}
-			return true;
+			rs = pstmt.executeQuery();
+			return rs;
+			
+//			while(rs.next()) {
+//				code=rs.getString("Music_Code");
+//				title=rs.getString("Music_Title");
+//				artist=rs.getString("Music_Genre");
+//				genre=rs.getString("Music_Genre");
+//				release=rs.getString("Music_Release");
+//				keyword=rs.getString("Music_Keyword");
+//				System.out.printf("%s\t%s\t%s\t%s\t%s\n",code,title,artist,genre,release,keyword);
+//				
+//			}
+//			return true;
 		} catch(Exception e1) { e1.printStackTrace(); 
 		} finally {
 			try { rs.close(); } catch(Exception e1) { e1.printStackTrace(); }
 			try { pstmt.close(); } catch(Exception e2) { e2.printStackTrace(); }
-		} return false;
+		} return null;
 	}
 		
 		public boolean Insert(MusicDTO dto) {
@@ -97,10 +98,10 @@ public class MusicDAO extends DAO {
 			
 
 			return false;
+			
 		}
 		
 	}
-	//연결객체 생성하는 작업까지만 한다. (finally이하 구문을 지워준다.)
 
 
 

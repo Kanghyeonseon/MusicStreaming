@@ -21,6 +21,7 @@ import controller.FrontController;
 import domain.DAO;
 import domain.MusicDAO;
 import dto.AuthDTO;
+import dto.DTO;
 import dto.MusicDTO;
 
 public class GUIViewer  implements ActionListener {
@@ -46,12 +47,14 @@ public class GUIViewer  implements ActionListener {
 	JTextArea area;
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
-	JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
+	public JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
-	JTextArea area7;
+	public JTextArea area7;
 	
 	//회원 메뉴 관련
 	JFrame membermenu;
+
+	private DTO dto;
  
 	 
 	//생성자
@@ -169,7 +172,9 @@ public class GUIViewer  implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		 if(e.getSource() == login ) {
+
+		
+			if(e.getSource() == login ) {
 			System.out.println("로그인 버튼 누름!");
 			
 			//로그인 처리 하기(컨트롤러)
@@ -177,10 +182,14 @@ public class GUIViewer  implements ActionListener {
 			//-Login창 숨김
 			//-Employee창 띄움
 			//로그인 실패시 다이얼로그 띄움
+
+			
+			
+			
 			if(employee.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
-				boolean r = controller.SubControllerEX("AUTH", 2, dto);
+				boolean r = controller.SubControllerEX("AUTH", 2, dto,this);
 				if(r)
 				{	
 					loginmenu.setVisible(false); //로그인인증이성공했으면 창을 보여줄 필요가없다.
@@ -193,7 +202,7 @@ public class GUIViewer  implements ActionListener {
 			}else if(member.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
-				boolean r = controller.SubControllerEX("AUTH", 1, dto);
+				boolean r = controller.SubControllerEX("AUTH", 1, dto,this);
 				if(r)
 				{	
 					loginmenu.setVisible(false);
@@ -213,9 +222,7 @@ public class GUIViewer  implements ActionListener {
 		 //전체보기를 누르면?
 		 if(e.getSource() ==bt1) {
 			System.out.println("전체보기 누름!");
-			MusicDTO dto = new MusicDTO("1","2","3","4","5","6");
-			boolean r = controller.SubControllerEX("MUSIC", 1, dto);
-			area7.append(dto.getMusic_Artist());
+			boolean r = controller.SubControllerEX("MUSIC", 1, dto,this);
 			if(r) {
 				System.out.println("전체보기 성공!");
 			}
@@ -223,7 +230,7 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt2) {
 			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
 					,area4.getText(),area5.getText(),area6.getText());
-			boolean r2 = controller.SubControllerEX("MUSIC", 2, dto);
+			boolean r2 = controller.SubControllerEX("MUSIC", 2, dto,this);
 			if(r2) {
 				System.out.println("INSERT성공!");
 			}
@@ -231,7 +238,7 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt3) {
 			 MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
 						,area4.getText(),area5.getText(),area6.getText());
-				boolean r2 = controller.SubControllerEX("MUSIC", 3, dto);
+				boolean r2 = controller.SubControllerEX("MUSIC", 3, dto,this);
 				if(r2) {
 					System.out.println("UPDATE 성공!");
 				}
@@ -239,7 +246,7 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt4) {
 			 System.out.println("삭제버튼 누름!");
 			 MusicDTO dto = new MusicDTO(area1.getText());
-			boolean r2 = controller.SubControllerEX("MUSIC", 4, dto);
+			boolean r2 = controller.SubControllerEX("MUSIC", 4, dto,this);
 				if(r2) {
 					System.out.println("DELETE 성공!");
 				}
