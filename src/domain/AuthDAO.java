@@ -65,4 +65,26 @@ public class AuthDAO extends DAO{
 		
 		return false;
 	}
+	//회원가입
+	public boolean SignUp(AuthDTO dto) {
+		try {
+			pstmt = conn.prepareStatement("insert into member_tbl values(?,?)");
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			
+			int result = pstmt.executeUpdate();
+			if(result!=0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }
