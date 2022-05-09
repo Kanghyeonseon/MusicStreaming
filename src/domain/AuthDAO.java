@@ -80,7 +80,7 @@ public class AuthDAO extends DAO{
 			e.printStackTrace();
 		}finally {
 			try {
-				pstmt.close();
+				pstmt.close(); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
