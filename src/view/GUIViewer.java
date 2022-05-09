@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ import dto.AuthDTO;
 import dto.DTO;
 import dto.MusicDTO;
 
-public class GUIViewer  implements ActionListener {
+public class GUIViewer extends JFrame implements ActionListener {
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -38,13 +39,14 @@ public class GUIViewer  implements ActionListener {
 	JLabel mem;
 	ButtonGroup radiogroup;
 	
-	
 	//직원 메뉴 관련 
 	JFrame employeemenu;
+	JFrame signupmenu;
 	JButton insert;
 	JButton update;
 	JButton delete;
 	JButton select;
+	JButton signup;
 	JTextArea area;
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
@@ -78,36 +80,41 @@ public class GUIViewer  implements ActionListener {
 		id = new JTextField("admin");
 		pw = new JTextField("1234");
 		
-		login = new JButton("로그인");
-		exit = new JButton("종료");
+		login  = new JButton("로그인");
+		exit   = new JButton("종료");
+		signup = new JButton("회원가입");
 		
 		emp = new JLabel("직원");
 		mem = new JLabel("멤버");
 		
 		employee = new JRadioButton("직원");
-		member = new JRadioButton("회원");
+		member   = new JRadioButton("회원");
 		
 		
-		radiogroup= new ButtonGroup();
+		radiogroup = new ButtonGroup();
 		radiogroup.add(employee);
 		radiogroup.add(member);
 		
 		
-		id.setBounds(20,10,200,30);
-		pw.setBounds(20,50,200,30);
-		login.setBounds(230,10,80,70);
-		exit.setBounds(320,10,80,70);
+		id.setBounds(20,30,200,30);
+		pw.setBounds(20,70,200,30);
+		login.setBounds(230,30,80,70);
+		exit.setBounds(320,30,80,70);
 		
-		employee.setBounds(20,90,20,20);
-		emp.setBounds(50,90,40,20);
-		member.setBounds(100,90,20,20);
-		mem.setBounds(130,90,40,20);
+		employee.setBounds(20,130,20,20);
+		emp.setBounds(50,130,40,20);
+		member.setBounds(100,130,20,20);
+		mem.setBounds(130,130,40,20);
+		signup.setBounds(270,120,100,40);
 		
 		employee.setSelected(true);
 		
 		//리스너
 		login.addActionListener(this);
 		exit.addActionListener(this);
+		signup.addActionListener(this);
+		
+		
 		
 		pan.add(id);
 		pan.add(pw);
@@ -117,15 +124,68 @@ public class GUIViewer  implements ActionListener {
 		pan.add(mem);
 		pan.add(employee);
 		pan.add(member);
+		pan.add(signup);
 		
 		loginmenu.add(pan);
 		
+		
 		loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		loginmenu.setBounds(100,100,430,170);
+		loginmenu.setBounds(500,500,450,200);
 		loginmenu.setVisible(true);
 	}
 	
-	//직원 메뉴
+	
+	//회원가입
+	JTextField idtext;
+	JTextField pwtext;
+	JLabel idlabel;
+	JLabel pwlabel;
+	JPanel panel;
+	JButton btn1;
+	
+	
+	
+	void SignUp() {
+		
+		
+		signupmenu = new JFrame("회원가입");
+		panel = new JPanel();
+		
+		
+		idlabel = new JLabel("ID");
+	    pwlabel = new JLabel("PW");
+		
+	    idtext = new JTextField(13);
+	    pwtext = new JTextField(13);
+	   
+	   btn1 = new JButton("회원가입");
+	   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
+	 
+	   
+	   idtext.setBounds(20,30,200,30);
+//	   idlabel.setBounds(20,30,200,30);
+//	   pwlabel.setBounds(70,30,200,30);
+	   pwtext.setBounds(20,120,200,30);
+	   btn1.setBounds(270,120,100,40);
+	   
+	   btn1.addActionListener(this);
+	   
+	   panel.add(idlabel);
+	   panel.add(pwlabel);
+	   panel.add(idtext);
+	   panel.add(pwtext);
+	   panel.add(btn1);
+	   
+		signupmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		signupmenu.setBounds(100,100,500,500);
+		signupmenu.add(panel);
+		signupmenu.setVisible(true);
+	   
+	
+	   
+	 //직원 메뉴
+
+	}
 	void Employee() {
 		employeemenu = new JFrame("직원메뉴");
 		JPanel pan = new JPanel();
@@ -170,15 +230,29 @@ public class GUIViewer  implements ActionListener {
 		membermenu.setBounds(100,100,500,500);
 		membermenu.setVisible(true);
 	}
-	
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+            
+            //회원가입
+		    if(e.getSource()==signup) {
+		    	System.out.println("Sign Up");
+		    	SignUp();
+		    }
 		
+		    if(e.getSource()==btn1) {
+		    	    AuthDTO dto = new AuthDTO(idtext.getText(),pwtext.getText());
+		    		boolean r = controller.SubControllerEX("AUTH", 3, dto);
+		    		if(r) {
+		    			JOptionPane.showMessageDialog(null, "로그인 성공");
+		    			Login();
+		    		}else{
+		    			JOptionPane.showMessageDialog(null, "로그인 실패");
+		    		}
+		    	}
+		
+ 		
 			if(e.getSource() == login ) {
-			System.out.println("로그인 버튼 누름!");
+			System.out.println("LOGIN");
 			
 			//로그인 처리 하기(컨트롤러)
 			//로그인 성공시 

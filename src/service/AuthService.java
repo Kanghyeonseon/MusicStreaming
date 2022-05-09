@@ -16,4 +16,8 @@ public class AuthService {
 	public boolean EmployeeLogin(AuthDTO dto) {
 		return dao.EmployeeLogin(dto);
 	}
+	//회원가입
+	public boolean SignUp(AuthDTO dto) {
+		return dao.SignUp(dto);
+	}
 }

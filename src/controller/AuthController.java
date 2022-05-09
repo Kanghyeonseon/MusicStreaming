@@ -15,7 +15,9 @@ public class AuthController implements SubController{
 		}
 		else if(num==2) { //직원로그인
 			return service.EmployeeLogin(adto);
-		}		
+		}else if(num==3) {
+			return service.SignUp(adto);
+		}
 		
 		return false;
 	}
