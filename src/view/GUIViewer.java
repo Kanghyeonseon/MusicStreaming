@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -88,7 +89,8 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		pan.setLayout(null);
 		
 		id = new JTextField("admin");
-		pw = new JTextField("1234");
+		pw = new JPasswordField("1234"); 
+		
 		id.addKeyListener(this);
 		id.setFocusTraversalKeysEnabled(false);
 		
