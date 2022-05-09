@@ -23,8 +23,9 @@ public class MusicDAO extends DAO {
 			{
 				GUIViewer.area7.append(
 						rs.getString("Music_Code")+"\t"+rs.getString("Music_Title")
-						+"\t"+rs.getString("Music_Artist")+"\t\t"+rs.getString("Music_Genre")
-						+"\t\t"+rs.getString("Music_Release")+rs.getString("Music_Keyword")
+						+"\t"+rs.getString("Music_Artist")+"\t"+rs.getString("Music_Genre")
+						+"\t"+rs.getString("Music_Release")+"\t"+rs.getString("Music_Keyword")
+						+"\n"
 						);				
 			}
 			return true;

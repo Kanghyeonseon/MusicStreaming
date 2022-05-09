@@ -190,7 +190,7 @@ public class GUIViewer  implements ActionListener {
 			if(employee.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
-				boolean r = controller.SubControllerEX("AUTH", 2, dto,this);
+				boolean r = controller.SubControllerEX("AUTH", 2, dto);
 				if(r)
 				{	
 					loginmenu.setVisible(false); //로그인인증이성공했으면 창을 보여줄 필요가없다.
@@ -203,7 +203,7 @@ public class GUIViewer  implements ActionListener {
 			}else if(member.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
-				boolean r = controller.SubControllerEX("AUTH", 1, dto,this);
+				boolean r = controller.SubControllerEX("AUTH", 1, dto);
 				if(r)
 				{	
 					loginmenu.setVisible(false);
@@ -226,12 +226,13 @@ public class GUIViewer  implements ActionListener {
 			MusicDAO dao = new MusicDAO();
 			MusicDTO dto = null;
 			dao.Select(dto);
+			boolean r2 = controller.SubControllerEX("MUSIC", 1,dto);
 			
 		 }
 		 if(e.getSource()==bt2) {
 			MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
 					,area4.getText(),area5.getText(),area6.getText());
-			boolean r2 = controller.SubControllerEX("MUSIC", 2, dto,this);
+			boolean r2 = controller.SubControllerEX("MUSIC", 2, dto);
 			if(r2) {
 				System.out.println("INSERT성공!");
 			}
@@ -239,7 +240,7 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt3) {
 			 MusicDTO dto = new MusicDTO(area1.getText(),area2.getText(),area3.getText()
 						,area4.getText(),area5.getText(),area6.getText());
-				boolean r2 = controller.SubControllerEX("MUSIC", 3, dto,this);
+				boolean r2 = controller.SubControllerEX("MUSIC", 3, dto);
 				if(r2) {
 					System.out.println("UPDATE 성공!");
 				}
@@ -247,7 +248,7 @@ public class GUIViewer  implements ActionListener {
 		 if(e.getSource()==bt4) {
 			 System.out.println("삭제버튼 누름!");
 			 MusicDTO dto = new MusicDTO(area1.getText());
-			boolean r2 = controller.SubControllerEX("MUSIC", 4, dto,this);
+			boolean r2 = controller.SubControllerEX("MUSIC", 4, dto);
 				if(r2) {
 					System.out.println("DELETE 성공!");
 				}
