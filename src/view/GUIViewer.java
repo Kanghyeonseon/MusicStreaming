@@ -161,10 +161,10 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
-		Font font = new Font("맑은 고딕", Font.PLAIN , 12);
+		Font font;
 		
 		JLabel comment = new JLabel("가입하실 아이디와 비밀번호를 입력해주세요.");
-		comment.setFont(font);
+		
 		
 		idlabel = new JLabel("ID");
 		pwlabel = new JLabel("PW");
@@ -181,6 +181,12 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		pwlabel.setBounds(10,80,200,30);
 		pwtext.setBounds(35,80,200,30);
 		btn1.setBounds(250,40,100,70);
+		
+		comment.setFont(new Font("맑은 고딕", Font.PLAIN , 12));
+		idlabel.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		pwlabel.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		btn1.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		
 	   
 		btn1.addActionListener(this);
 	   
