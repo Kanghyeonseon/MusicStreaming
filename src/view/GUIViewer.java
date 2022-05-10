@@ -136,7 +136,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		emp.setBounds(50,130,40,20);
 		member.setBounds(100,130,20,20);
 		mem.setBounds(130,130,40,20);
-		signup.setBounds(230,120,100,30);
+		signup.setBounds(230,120,170,30);
 		
 		employee.setSelected(true);
 		
@@ -160,7 +160,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		loginmenu.add(pan);		
 		
 		loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		loginmenu.setBounds(500,500,450,200);
+		loginmenu.setBounds(500,500,430,210);
 		loginmenu.setVisible(true);
 	}
 	
