@@ -185,7 +185,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		btn1 = new JButton("회원가입");
 //		   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
 	 
-		comment.setBounds(35, 10, 300, 10);
+		comment.setBounds(35, 10, 300, 20);
 		idtext.setBounds(35,40,200,30);
 		idlabel.setBounds(10,40,200,30);
 		pwlabel.setBounds(10,80,200,30);
@@ -208,7 +208,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		panel.add(btn1);
 	   
 		signupmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		signupmenu.setBounds(100,100,400,170);
+		signupmenu.setBounds(100,100,380,170);
 		signupmenu.add(panel);
 		signupmenu.setVisible(true);
 	   
