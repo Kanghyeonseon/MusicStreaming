@@ -6,7 +6,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/ojdbc6-11.2.0.3.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/J/정처기과정평가/ojdbc6-11.2.0.3.jar"/>
+>>>>>>> branch 'Jay' of https://github.com/Kanghyeonseon/MusicStreaming.git
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

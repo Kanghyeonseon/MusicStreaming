@@ -35,7 +35,7 @@ import dto.MusicDTO;
 
 public class GUIViewer extends JFrame implements ActionListener,KeyListener,MouseListener {
 	
-	//추가!!
+	//추가!! 
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
@@ -121,22 +121,27 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		employee = new JRadioButton("직원");
 		member   = new JRadioButton("회원");
 		
-		
 		radiogroup = new ButtonGroup();
 		radiogroup.add(employee);
 		radiogroup.add(member);
 		
+		login.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		exit.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		signup.setFont(new Font("맑은 고딕", Font.PLAIN, 11));
+		emp.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
+		mem.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		
 		id.setBounds(20,30,200,30);
 		pw.setBounds(20,70,200,30);
 		login.setBounds(230,30,80,70);
 		exit.setBounds(320,30,80,70);
+		signup.setBounds(230,110,80,30);
 		
-		employee.setBounds(20,130,20,20);
-		emp.setBounds(50,130,40,20);
-		member.setBounds(100,130,20,20);
-		mem.setBounds(130,130,40,20);
-		signup.setBounds(230,120,170,30);
+		employee.setBounds(30,115,20,20);
+		emp.setBounds(55,115,40,20);
+		member.setBounds(130,115,20,20);
+		mem.setBounds(155,115,40,20);
+		
 		
 		employee.setSelected(true);
 		
@@ -160,7 +165,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		loginmenu.add(pan);		
 		
 		loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		loginmenu.setBounds(500,500,430,210);
+		loginmenu.setBounds(500,500,450,200);
 		loginmenu.setVisible(true);
 	}
 	
@@ -208,7 +213,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		panel.add(btn1);
 	   
 		signupmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		signupmenu.setBounds(100,100,380,170);
+		signupmenu.setBounds(100,100,400,170);
 		signupmenu.add(panel);
 		signupmenu.setVisible(true);
 	   
@@ -299,6 +304,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		    if(e.getSource()==signup) {
 		    	System.out.println("Sign Up");
 		    	SignUp();
+		    	loginmenu.setVisible(false);
 		    }
 		
 		    if(e.getSource()==btn1) {
@@ -307,6 +313,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		    		if(r) {
 		    			JOptionPane.showMessageDialog(null, "회원가입 성공");
 		    			Login();
+		    			signupmenu.setVisible(false);
 		    		}else{
 		    			JOptionPane.showMessageDialog(null, "회원가입 실패");
 		    		}
