@@ -137,7 +137,8 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 		login.addActionListener(this);
 		exit.addActionListener(this);
 		signup.addActionListener(this);
-		button1.addActionListener(this);
+		
+
 		
 		
 		
@@ -320,9 +321,6 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 			//-Employee창 띄움
 			//로그인 실패시 다이얼로그 띄움
 
-			
-			
-			
 			if(employee.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
@@ -448,14 +446,12 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

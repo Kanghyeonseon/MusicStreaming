@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/82107/Downloads/mysql-connector-java-8.0.29/mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar"/>
+	<classpathentry kind="lib" path="C:/정처기과정/데이터입출력 구현/sqldeveloper-21.4.2.018.1706-x64/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
