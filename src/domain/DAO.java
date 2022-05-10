@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DAO {
-	public String id = "streamingdb";
+	public String id = "STREAMING";
 	public String pw = "1234";
 	public String url ="jdbc:oracle:thin:@localhost:1521:XE"; 
 	public Connection conn = null; 

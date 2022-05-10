@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+<<<<<<< HEAD
 import java.awt.event.MouseEvent;
+=======
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,6 +26,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.w3c.dom.events.EventTarget;
+import org.w3c.dom.events.MouseEvent;
+import org.w3c.dom.views.AbstractView;
+
 import controller.FrontController;
 import domain.DAO;
 import domain.MusicDAO;
@@ -30,15 +37,22 @@ import dto.AuthDTO;
 import dto.DTO;
 import dto.MusicDTO;
 
+<<<<<<< HEAD
 public class GUIViewer extends JFrame implements ActionListener,KeyListener, MouseListener {
+=======
+public class GUIViewer extends JFrame implements ActionListener,KeyListener,MouseListener {
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 	
+<<<<<<< HEAD
 	//추가!!!
+=======
+	//추가!!
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
 	
 	//로그인 창 관련 
-	
 	JFrame loginmenu; JTextField id; JTextField pw; JButton login;
 	JButton exit; JRadioButton employee;
 	JRadioButton member;
@@ -46,9 +60,23 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 	JLabel mem;
 	ButtonGroup radiogroup;
 	
+	//회원가입
+//	JFrame signupmenu;
+	JTextField idtext;
+	JTextField pwtext;
+	JLabel idlabel;
+	JLabel pwlabel;
+	JButton btn1;
+	
+	
 	//직원 메뉴 관련 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 	JFrame employeemenu;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 	JFrame signupmenu;
+
 	JButton insert;
 	JButton update;
 	JButton delete;
@@ -62,8 +90,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 	
 	public JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
-	public static JTextArea area7;
-	
+	public static JTextArea area7;	
 	//레이블
 	JLabel label1; JLabel label2; JLabel label3; 
 	JLabel label4; JLabel label5; JLabel label6;
@@ -74,6 +101,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 	JButton button1;
 	JTextArea meberArea;
 	JScrollPane memberScroll;
+	
 
 	private DTO dto;
  
@@ -129,18 +157,24 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 		emp.setBounds(50,130,40,20);
 		member.setBounds(100,130,20,20);
 		mem.setBounds(130,130,40,20);
-		signup.setBounds(270,120,100,40);
+		signup.setBounds(230,120,170,30);
 		
 		employee.setSelected(true);
 		
 		//리스너
+		id.addMouseListener(this);
+		pw.addMouseListener(this);
 		login.addActionListener(this);
 		exit.addActionListener(this);
+<<<<<<< HEAD
 		signup.addActionListener(this);
 		
 
 		
 		
+=======
+		signup.addActionListener(this);		
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 		
 		pan.add(id);
 		pan.add(pw);
@@ -152,58 +186,58 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 		pan.add(member);
 		pan.add(signup);
 		
-		loginmenu.add(pan);
-		
+		loginmenu.add(pan);		
 		
 		loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		loginmenu.setBounds(500,500,450,200);
+		loginmenu.setBounds(500,500,430,210);
 		loginmenu.setVisible(true);
 	}
 	
 	
-	//회원가입
-	JTextField idtext;
-	JTextField pwtext;
-	JLabel idlabel;
-	JLabel pwlabel;
-	JPanel panel;
-	JButton btn1;
-	
-	
-	
+	//회원가입	
 	void SignUp() {
-		
-		
 		signupmenu = new JFrame("회원가입");
-		panel = new JPanel();
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		
+		Font font;
+		
+		JLabel comment = new JLabel("가입하실 아이디와 비밀번호를 입력해주세요.");
 		
 		
 		idlabel = new JLabel("ID");
-	    pwlabel = new JLabel("PW");
+		pwlabel = new JLabel("PW");
 		
-	    idtext = new JTextField(13);
-	    pwtext = new JTextField(13);
+		idtext = new JTextField();
+		pwtext = new JTextField();
 	   
-	   btn1 = new JButton("회원가입");
-	   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btn1 = new JButton("회원가입");
+//		   btn1.setAlignmentX(Component.CENTER_ALIGNMENT);
 	 
+		comment.setBounds(35, 10, 300, 20);
+		idtext.setBounds(35,40,200,30);
+		idlabel.setBounds(10,40,200,30);
+		pwlabel.setBounds(10,80,200,30);
+		pwtext.setBounds(35,80,200,30);
+		btn1.setBounds(250,40,100,70);
+		
+		comment.setFont(new Font("맑은 고딕", Font.PLAIN , 12));
+		idlabel.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		pwlabel.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		btn1.setFont(new Font("맑은 고딕", Font.BOLD , 12));
+		
 	   
-	   idtext.setBounds(20,30,200,30);
-//	   idlabel.setBounds(20,30,200,30);
-//	   pwlabel.setBounds(70,30,200,30);
-	   pwtext.setBounds(20,120,200,30);
-	   btn1.setBounds(270,120,100,40);
+		btn1.addActionListener(this);
 	   
-	   btn1.addActionListener(this);
-	   
-	   panel.add(idlabel);
-	   panel.add(pwlabel);
-	   panel.add(idtext);
-	   panel.add(pwtext);
-	   panel.add(btn1);
+		panel.add(comment);
+		panel.add(idlabel);
+		panel.add(idtext);	   
+		panel.add(pwlabel);	   
+		panel.add(pwtext);
+		panel.add(btn1);
 	   
 		signupmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		signupmenu.setBounds(100,100,500,500);
+		signupmenu.setBounds(100,100,380,170);
 		signupmenu.add(panel);
 		signupmenu.setVisible(true);
 
@@ -269,7 +303,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 		
-		button1 = new JButton("전체음악검색"); button1.setBounds(350, 20, 120,30);
+		button1 = new JButton("전체음악검색"); button1.setBounds(380, 20, 120,30);
 				
 		pan.add(button1);
 		
@@ -304,10 +338,10 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 		    	    AuthDTO dto = new AuthDTO(idtext.getText(),pwtext.getText());
 		    		boolean r = controller.SubControllerEX("AUTH", 3, dto);
 		    		if(r) {
-		    			JOptionPane.showMessageDialog(null, "로그인 성공");
+		    			JOptionPane.showMessageDialog(null, "회원가입 성공");
 		    			Login();
 		    		}else{
-		    			JOptionPane.showMessageDialog(null, "로그인 실패");
+		    			JOptionPane.showMessageDialog(null, "회원가입 실패");
 		    		}
 		    	}
 		
@@ -319,8 +353,13 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 			//로그인 성공시 
 			//-Login창 숨김
 			//-Employee창 띄움
+<<<<<<< HEAD
 			//로그인 실패시 다이얼로그 띄움
 
+=======
+			//로그인 실패시 다이얼로그 띄움		
+			
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 			if(employee.isSelected())
 			{
 				AuthDTO dto = new AuthDTO(id.getText(),pw.getText());
@@ -405,7 +444,6 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
 	}
 
 
@@ -413,16 +451,60 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener, Mou
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==id) {
 			pw.requestFocus();
+			pw.setText("");
 		}
 		
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==pw) {
 			id.requestFocus();
+			
 		}
+	}
+
+
+
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		if(e.getSource()==id) {
+			id.setText("");
+		}
+		if(e.getSource()==pw) {
+			pw.setText("");
+		}
+		
+	}
+
+
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		
 		
 	}
 
