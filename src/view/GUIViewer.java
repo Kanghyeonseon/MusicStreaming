@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -22,6 +23,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import org.w3c.dom.events.EventTarget;
+import org.w3c.dom.views.AbstractView;
 
 import controller.FrontController;
 import domain.DAO;
@@ -102,10 +106,15 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 		
+
 		id = new JTextField("admin");
 		pw = new JPasswordField("1234"); 
 		id.addMouseListener(this);
 		pw.addMouseListener(this);
+
+		id = new JTextField("아이디를 입력하세요");
+		pw = new JPasswordField("비밀번호를 입력하세요"); 
+
 		
 		id.addKeyListener(this);
 		id.setFocusTraversalKeysEnabled(false);
@@ -140,6 +149,8 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		employee.setSelected(true);
 		
 		//리스너
+		id.addMouseListener(this);
+		pw.addMouseListener(this);
 		login.addActionListener(this);
 		exit.addActionListener(this);
 		signup.addActionListener(this);		
@@ -421,12 +432,6 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		
-	}
-
-
-	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource()==id) {
 			id.setText("");
@@ -461,6 +466,13 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

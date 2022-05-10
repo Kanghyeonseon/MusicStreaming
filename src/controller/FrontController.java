@@ -37,9 +37,6 @@ public class FrontController {
 		}
 		return false;
 	}
-	
-	
-	
-	
+		
 	
 }
