@@ -35,7 +35,7 @@ import dto.MusicDTO;
 
 public class GUIViewer extends JFrame implements ActionListener,KeyListener,MouseListener {
 	
-	//추가!!!eee
+	//추가!!
 	
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
