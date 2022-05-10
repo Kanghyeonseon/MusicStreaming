@@ -35,8 +35,8 @@ import dto.MusicDTO;
 
 public class GUIViewer extends JFrame implements ActionListener,KeyListener,MouseListener {
 	
-	//추가!! ee 
-	
+	//추가!!
+
 	//컨트롤러 추가
 	FrontController controller =new FrontController();
 	
@@ -137,11 +137,19 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		exit.setBounds(320,30,80,70);
 		signup.setBounds(230,110,80,30);
 		
+<<<<<<< HEAD
 		employee.setBounds(30,115,20,20);
 		emp.setBounds(55,115,40,20);
 		member.setBounds(130,115,20,20);
 		mem.setBounds(155,115,40,20);
 		
+=======
+		employee.setBounds(20,130,20,20);
+		emp.setBounds(50,130,40,20);
+		member.setBounds(100,130,20,20);
+		mem.setBounds(130,130,40,20);
+		signup.setBounds(230,120,170,30);
+>>>>>>> branch 'master' of https://github.com/Kanghyeonseon/MusicStreaming.git
 		
 		employee.setSelected(true);
 		
@@ -165,7 +173,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		loginmenu.add(pan);		
 		
 		loginmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		loginmenu.setBounds(500,500,450,200);
+		loginmenu.setBounds(500,500,430,210);
 		loginmenu.setVisible(true);
 	}
 	
@@ -213,7 +221,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 		panel.add(btn1);
 	   
 		signupmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		signupmenu.setBounds(100,100,400,170);
+		signupmenu.setBounds(100,100,380,170);
 		signupmenu.add(panel);
 		signupmenu.setVisible(true);
 	   
@@ -413,7 +421,6 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
 	}
 
 
@@ -421,10 +428,12 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==id) {
 			pw.requestFocus();
+			pw.setText("");
 		}
 		
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==pw) {
 			id.requestFocus();
+			
 		}
 	}
 
@@ -472,7 +481,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
