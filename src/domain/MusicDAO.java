@@ -5,8 +5,6 @@ package domain;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.xdevapi.Statement;
 
 import dto.MusicDTO;
 import view.GUIViewer;
