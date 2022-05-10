@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,7 +30,7 @@ import dto.AuthDTO;
 import dto.DTO;
 import dto.MusicDTO;
 
-public class GUIViewer extends JFrame implements ActionListener,KeyListener {
+public class GUIViewer extends JFrame implements ActionListener,KeyListener, MouseListener {
 	
 	//추가!!!
 	
@@ -56,6 +58,8 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 	JScrollPane scroll;
 	JButton bt1; JButton bt2; JButton bt3; JButton bt4; JButton bt5; //전체음악보기, 음악추가, 음악수정, 음악삭제, 종료
 	JButton bt6;
+	
+	
 	public JTextField area1; JTextField area2; JTextField area3; JTextField area4; JTextField area5; JTextField area6;
 	//음악코드, 곡제목, 아티스트, 장르, 발매일, 키워드
 	public static JTextArea area7;
@@ -90,10 +94,14 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 		
-		id = new JTextField("admin");
-		pw = new JPasswordField("1234"); 
+		id = new JTextField("아이디를 입력하세요");
+		pw = new JPasswordField("비밀번호를 입력하세요"); 
 		
-		id.addKeyListener(this);
+		id.addMouseListener(this);
+		pw.addMouseListener(this);
+		
+		
+		
 		id.setFocusTraversalKeysEnabled(false);
 		
 		login  = new JButton("로그인");
@@ -129,6 +137,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		login.addActionListener(this);
 		exit.addActionListener(this);
 		signup.addActionListener(this);
+		button1.addActionListener(this);
 		
 		
 		
@@ -196,12 +205,9 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		signupmenu.setBounds(100,100,500,500);
 		signupmenu.add(panel);
 		signupmenu.setVisible(true);
-	   
-	
-	   
-	 //직원 메뉴
 
 	}
+	 //직원 메뉴
 	void Employee() {
 		employeemenu = new JFrame("직원메뉴");
 		JPanel pan = new JPanel();
@@ -218,16 +224,16 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 		pan.add(bt1); pan.add(bt2); pan.add(bt3); pan.add(bt4); pan.add(bt5); pan.add(bt6);
 		
 		//텍스트필드들 추가
-		area1 = new JTextField("코드"); area1.setBounds(20, 20, 330, 30); 
-		area2 = new JTextField(""); area2.setBounds(20, 66, 330, 30); 
-		area3 = new JTextField(""); area3.setBounds(20, 111, 330, 30); 
-		area4 = new JTextField(""); area4.setBounds(20, 156, 330, 30); 
-		area5 = new JTextField(""); area5.setBounds(20, 201, 330, 30); 
-		area6 = new JTextField(""); area6.setBounds(20, 246, 330, 30); 
+		area1 = new JTextField(); area1.setBounds(20, 20, 330, 30); 
+		area2 = new JTextField(); area2.setBounds(20, 66, 330, 30); 
+		area3 = new JTextField(); area3.setBounds(20, 111, 330, 30); 
+		area4 = new JTextField(); area4.setBounds(20, 156, 330, 30); 
+		area5 = new JTextField(); area5.setBounds(20, 201, 330, 30); 
+		area6 = new JTextField(); area6.setBounds(20, 246, 330, 30); 
 		
 		//레이블 추가
 		label1 = new JLabel("Code"); label1.setBounds(20, 5, 30, 15);
-		label2 = new JLabel("Tilte"); label2.setBounds(20, 52, 50, 15);
+		label2 = new JLabel("Title"); label2.setBounds(20, 52, 50, 15);
 		label3 = new JLabel("Artist"); label3.setBounds(20, 97, 50, 15);
 		label4 = new JLabel("Gerne"); label4.setBounds(20, 142, 50, 15);
 		label5 = new JLabel("Release"); label5.setBounds(20, 187, 50, 15);
@@ -279,7 +285,14 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-            
+           
+           
+           if(e.getSource()==button1) {
+        	meberArea.setText("");
+   			MusicDTO dto = null;
+   			boolean r2 = controller.SubControllerEX("MUSIC", 1,dto);
+   			
+   		 }
             //회원가입
 		    if(e.getSource()==signup) {
 		    	System.out.println("Sign Up");
@@ -412,6 +425,51 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		 if(e.getSource()==id) {
+			 
+         	id.setText("");
+         }
+		 if(e.getSource()==pw) {
+			 pw.setText("");
+			 
+		 }
+		 
+		 
+		     
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }
