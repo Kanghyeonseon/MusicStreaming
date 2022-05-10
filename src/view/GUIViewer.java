@@ -406,7 +406,6 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
 	}
 
 
@@ -414,10 +413,12 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==id) {
 			pw.requestFocus();
+			pw.setText("");
 		}
 		
 		if(e.getKeyCode()==KeyEvent.VK_TAB&&e.getSource()==pw) {
 			id.requestFocus();
+			
 		}
 	}
 
@@ -465,7 +466,7 @@ public class GUIViewer extends JFrame implements ActionListener,KeyListener,Mous
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
